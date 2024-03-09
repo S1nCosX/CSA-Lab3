@@ -219,7 +219,7 @@ class ControlUnit:
 
     def execute_next(self):
         cur_op = self.program[self.program_counter].__str__()
-        print(cur_op, ':', self.datapath.acc)
+        #print(cur_op, ':', self.datapath.acc)
         while (cur_op == self.program[self.program_counter].__str__()):
             self.tick()
 

@@ -1,0 +1,252 @@
+in_source: |-
+  section .text:
+    .loop
+    LD DIRECT #STDIN
+    ST IMMEDIATE #STDOUT
+    CMP IMMEDIATE 10
+    JNZ DIRECT .loop
+    HLT
+in_stdin: abobus
+out_instructions: |
+  preload:
+  LD   [IMMEDIATE] 0
+  ST   [IMMEDIATE] 536870912
+  program:
+  LD   [DIRECT]    268435456
+  ST   [IMMEDIATE] 268435457
+  CMP  [IMMEDIATE] 10
+  JNZ  [DIRECT]    536870912
+  HLT  [DIRECT]    0
+out_stdout: |
+  ============================================================
+  cat
+out_log: |
+  DEBUG:root:
+  DEBUG:root:Fetched: preload 
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [IMMEDIATE] 0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:     4 STAGE: INSTR_FETCH ACC:          0 PC:   1 DATA_ADDR:          0 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 536870912
+  DEBUG:root:TICK:     5 STAGE: ARG_FETCH   ACC:          0 PC:   2 DATA_ADDR:          0 ARG:  536870912 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:     5 STAGE: EXECUTION   ACC:          0 PC:   2 DATA_ADDR:          0 ARG:  536870912 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:TICK:     6 STAGE: INSTR_FETCH ACC:          0 PC:   2 DATA_ADDR:  536870912 ARG:  536870912 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:     0 STAGE: ARG_FETCH   ACC:          0 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:     0 STAGE: EXECUTION   ACC:          0 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:TICK:     1 STAGE: INSTR_FETCH ACC:          0 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:     2 STAGE: ARG_FETCH   ACC:          0 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:input: ['\n', 's', 'u', 'b', 'o', 'b'] --> 'a'
+  DEBUG:root:TICK:     3 STAGE: EXECUTION   ACC:          0 PC:   1 DATA_ADDR:  268435456 ARG:         97 DATA_BUS:         97 N|Z: 0|1
+  DEBUG:root:TICK:     4 STAGE: INSTR_FETCH ACC:         97 PC:   1 DATA_ADDR:  268435456 ARG:         97 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:     5 STAGE: ARG_FETCH   ACC:         97 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:     5 STAGE: EXECUTION   ACC:         97 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:output: [] <-- 'a'
+  DEBUG:root:TICK:     6 STAGE: INSTR_FETCH ACC:         97 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:     7 STAGE: ARG_FETCH   ACC:         97 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:     7 STAGE: EXECUTION   ACC:         97 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:TICK:     8 STAGE: INSTR_FETCH ACC:         97 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:     9 STAGE: ARG_FETCH   ACC:         97 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:         97 N|Z: 0|0
+  DEBUG:root:TICK:    10 STAGE: EXECUTION   ACC:         97 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    11 STAGE: INSTR_FETCH ACC:         97 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:    12 STAGE: ARG_FETCH   ACC:         97 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    12 STAGE: EXECUTION   ACC:         97 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    13 STAGE: INSTR_FETCH ACC:         97 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:    14 STAGE: ARG_FETCH   ACC:         97 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:input: ['\n', 's', 'u', 'b', 'o'] --> 'b'
+  DEBUG:root:TICK:    15 STAGE: EXECUTION   ACC:         97 PC:   1 DATA_ADDR:  268435456 ARG:         98 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:TICK:    16 STAGE: INSTR_FETCH ACC:         98 PC:   1 DATA_ADDR:  268435456 ARG:         98 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:    17 STAGE: ARG_FETCH   ACC:         98 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    17 STAGE: EXECUTION   ACC:         98 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:output: ['a'] <-- 'b'
+  DEBUG:root:TICK:    18 STAGE: INSTR_FETCH ACC:         98 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:    19 STAGE: ARG_FETCH   ACC:         98 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    19 STAGE: EXECUTION   ACC:         98 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:TICK:    20 STAGE: INSTR_FETCH ACC:         98 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:    21 STAGE: ARG_FETCH   ACC:         98 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:TICK:    22 STAGE: EXECUTION   ACC:         98 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    23 STAGE: INSTR_FETCH ACC:         98 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:    24 STAGE: ARG_FETCH   ACC:         98 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    24 STAGE: EXECUTION   ACC:         98 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    25 STAGE: INSTR_FETCH ACC:         98 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:    26 STAGE: ARG_FETCH   ACC:         98 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:input: ['\n', 's', 'u', 'b'] --> 'o'
+  DEBUG:root:TICK:    27 STAGE: EXECUTION   ACC:         98 PC:   1 DATA_ADDR:  268435456 ARG:        111 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:TICK:    28 STAGE: INSTR_FETCH ACC:        111 PC:   1 DATA_ADDR:  268435456 ARG:        111 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:    29 STAGE: ARG_FETCH   ACC:        111 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    29 STAGE: EXECUTION   ACC:        111 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:output: ['a', 'b'] <-- 'o'
+  DEBUG:root:TICK:    30 STAGE: INSTR_FETCH ACC:        111 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:    31 STAGE: ARG_FETCH   ACC:        111 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    31 STAGE: EXECUTION   ACC:        111 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:TICK:    32 STAGE: INSTR_FETCH ACC:        111 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:    33 STAGE: ARG_FETCH   ACC:        111 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:        111 N|Z: 0|0
+  DEBUG:root:TICK:    34 STAGE: EXECUTION   ACC:        111 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    35 STAGE: INSTR_FETCH ACC:        111 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:    36 STAGE: ARG_FETCH   ACC:        111 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    36 STAGE: EXECUTION   ACC:        111 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    37 STAGE: INSTR_FETCH ACC:        111 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:    38 STAGE: ARG_FETCH   ACC:        111 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:input: ['\n', 's', 'u'] --> 'b'
+  DEBUG:root:TICK:    39 STAGE: EXECUTION   ACC:        111 PC:   1 DATA_ADDR:  268435456 ARG:         98 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:TICK:    40 STAGE: INSTR_FETCH ACC:         98 PC:   1 DATA_ADDR:  268435456 ARG:         98 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:    41 STAGE: ARG_FETCH   ACC:         98 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    41 STAGE: EXECUTION   ACC:         98 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:output: ['a', 'b', 'o'] <-- 'b'
+  DEBUG:root:TICK:    42 STAGE: INSTR_FETCH ACC:         98 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:    43 STAGE: ARG_FETCH   ACC:         98 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    43 STAGE: EXECUTION   ACC:         98 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:TICK:    44 STAGE: INSTR_FETCH ACC:         98 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:    45 STAGE: ARG_FETCH   ACC:         98 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:         98 N|Z: 0|0
+  DEBUG:root:TICK:    46 STAGE: EXECUTION   ACC:         98 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    47 STAGE: INSTR_FETCH ACC:         98 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:    48 STAGE: ARG_FETCH   ACC:         98 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    48 STAGE: EXECUTION   ACC:         98 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    49 STAGE: INSTR_FETCH ACC:         98 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:    50 STAGE: ARG_FETCH   ACC:         98 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:input: ['\n', 's'] --> 'u'
+  DEBUG:root:TICK:    51 STAGE: EXECUTION   ACC:         98 PC:   1 DATA_ADDR:  268435456 ARG:        117 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:TICK:    52 STAGE: INSTR_FETCH ACC:        117 PC:   1 DATA_ADDR:  268435456 ARG:        117 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:    53 STAGE: ARG_FETCH   ACC:        117 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    53 STAGE: EXECUTION   ACC:        117 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:output: ['a', 'b', 'o', 'b'] <-- 'u'
+  DEBUG:root:TICK:    54 STAGE: INSTR_FETCH ACC:        117 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:    55 STAGE: ARG_FETCH   ACC:        117 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    55 STAGE: EXECUTION   ACC:        117 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:TICK:    56 STAGE: INSTR_FETCH ACC:        117 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:    57 STAGE: ARG_FETCH   ACC:        117 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:        117 N|Z: 0|0
+  DEBUG:root:TICK:    58 STAGE: EXECUTION   ACC:        117 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    59 STAGE: INSTR_FETCH ACC:        117 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:    60 STAGE: ARG_FETCH   ACC:        117 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    60 STAGE: EXECUTION   ACC:        117 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    61 STAGE: INSTR_FETCH ACC:        117 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:    62 STAGE: ARG_FETCH   ACC:        117 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:input: ['\n'] --> 's'
+  DEBUG:root:TICK:    63 STAGE: EXECUTION   ACC:        117 PC:   1 DATA_ADDR:  268435456 ARG:        115 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:TICK:    64 STAGE: INSTR_FETCH ACC:        115 PC:   1 DATA_ADDR:  268435456 ARG:        115 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:    65 STAGE: ARG_FETCH   ACC:        115 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    65 STAGE: EXECUTION   ACC:        115 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:output: ['a', 'b', 'o', 'b', 'u'] <-- 's'
+  DEBUG:root:TICK:    66 STAGE: INSTR_FETCH ACC:        115 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:    67 STAGE: ARG_FETCH   ACC:        115 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    67 STAGE: EXECUTION   ACC:        115 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:TICK:    68 STAGE: INSTR_FETCH ACC:        115 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:    69 STAGE: ARG_FETCH   ACC:        115 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:        115 N|Z: 0|0
+  DEBUG:root:TICK:    70 STAGE: EXECUTION   ACC:        115 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    71 STAGE: INSTR_FETCH ACC:        115 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: program 
+  DEBUG:root:TICK:    72 STAGE: ARG_FETCH   ACC:        115 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    72 STAGE: EXECUTION   ACC:        115 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:TICK:    73 STAGE: INSTR_FETCH ACC:        115 PC:   0 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: LD   [DIRECT]    268435456
+  DEBUG:root:TICK:    74 STAGE: ARG_FETCH   ACC:        115 PC:   1 DATA_ADDR:  536870912 ARG:  268435456 DATA_BUS:          0 N|Z: 0|0
+  DEBUG:root:input: [] --> '
+  '
+  DEBUG:root:TICK:    75 STAGE: EXECUTION   ACC:        115 PC:   1 DATA_ADDR:  268435456 ARG:         10 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:TICK:    76 STAGE: INSTR_FETCH ACC:         10 PC:   1 DATA_ADDR:  268435456 ARG:         10 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: ST   [IMMEDIATE] 268435457
+  DEBUG:root:TICK:    77 STAGE: ARG_FETCH   ACC:         10 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    77 STAGE: EXECUTION   ACC:         10 PC:   2 DATA_ADDR:  268435456 ARG:  268435457 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:output: ['a', 'b', 'o', 'b', 'u', 's'] <-- '
+  '
+  DEBUG:root:TICK:    78 STAGE: INSTR_FETCH ACC:         10 PC:   2 DATA_ADDR:  268435457 ARG:  268435457 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:
+  DEBUG:root:Fetched: CMP  [IMMEDIATE] 10
+  DEBUG:root:TICK:    79 STAGE: ARG_FETCH   ACC:         10 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:Arg fetch stage skipped
+  DEBUG:root:TICK:    79 STAGE: EXECUTION   ACC:         10 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         10 N|Z: 0|0
+  DEBUG:root:TICK:    80 STAGE: INSTR_FETCH ACC:         10 PC:   3 DATA_ADDR:  268435457 ARG:         10 DATA_BUS:         10 N|Z: 0|1
+  DEBUG:root:
+  DEBUG:root:Fetched: JNZ  [DIRECT]    536870912
+  DEBUG:root:TICK:    81 STAGE: ARG_FETCH   ACC:         10 PC:   4 DATA_ADDR:  268435457 ARG:  536870912 DATA_BUS:         10 N|Z: 0|1
+  DEBUG:root:TICK:    82 STAGE: EXECUTION   ACC:         10 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:TICK:    83 STAGE: INSTR_FETCH ACC:         10 PC:   4 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:
+  DEBUG:root:Fetched: HLT  [DIRECT]    0
+  DEBUG:root:TICK:    84 STAGE: ARG_FETCH   ACC:         10 PC:   5 DATA_ADDR:  536870912 ARG:          0 DATA_BUS:          0 N|Z: 0|1
+  DEBUG:root:TICK:    85 STAGE: EXECUTION   ACC:         10 PC:   5 DATA_ADDR:          0 ARG:          0 DATA_BUS:          0 N|Z: 0|1
